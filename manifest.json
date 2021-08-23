@@ -1,38 +1,38 @@
 {
-  "name": "@formula21",
-  "short_name": "@formula21",
-  "start_url": "/",
+  "name": "Happy Birthday",
+  "short_name": "Happy Birthday",
+  "start_url": "/birthday",
   "scope":"/birthday",
   "display": "minimal-ui",
   "description": "Wishing you many many happy returns of the day. Stay healthy and safe. May God bless you.",
   "background_color": "#c75acc",
   "theme_color": "#6a24a6",
   "icons": [{
-      "src": "images/icons/16.png",
+      "src": "https://formula21.github.io/images/icons/16.png",
       "sizes": "16x16",
       "type": "image/png"
     },{
-      "src": "images/icons/64.png",
+      "src": "https://formula21.github.io/images/icons/64.png",
       "sizes": "64x64",
       "type": "image/png"
     },{
-      "src": "images/icons/128.png",
+      "src": "https://formula21.github.io/images/icons/128.png",
       "sizes": "128x128",
       "type": "image/png"
     },{
-      "src": "images/icons/144.png",
+      "src": "https://formula21.github.io/images/icons/144.png",
       "sizes": "144x144",
       "type": "image/png"
     },{
-      "src": "images/icons/152.png",
+      "src": "https://formula21.github.io/images/icons/152.png",
       "sizes": "152x152",
       "type": "image/png"
     },{
-      "src": "images/icons/192.png",
+      "src": "https://formula21.github.io/images/icons/192.png",
       "sizes": "192x192",
       "type": "image/png"
     },{
-      "src": "images/icons/384.png",
+      "src": "https://formula21.github.io/images/icons/384.png",
       "sizes": "384x384",
       "type": "image/png"
     }],

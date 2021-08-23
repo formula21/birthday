@@ -1,8 +1,8 @@
 {
   "name": "@formula21",
   "short_name": "@formula21",
-  "start_url": "/birthday",
-  "scope":"/",
+  "start_url": "/",
+  "scope":"/birthday",
   "display": "minimal-ui",
   "description": "Wishing you many many happy returns of the day. Stay healthy and safe. May God bless you.",
   "background_color": "#c75acc",

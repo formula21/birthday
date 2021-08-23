@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Happy Birthday Nootan!!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+        <link href="https://formula21.github.io/vendor/fontawesome/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css?t=177485" type="text/css"/>
+    </head>
+    <body>
+        <div class="card-bd" style="box-sizing: unset;">
+            <div class="back" style="box-sizing: unset;"></div>
+            <div class="front" style="box-sizing: unset;">
+                <div class="imgset">
+                    <img width="100%" src="bd.png" id="bdimg">
+                </div>
+            </div>
+            <div class="text-container">
+                <p class="head txt">Happy Birthday Nootan!!</p>
+                <p class="txt">Wishing you a day filled with happiness and a year filled with joy.</p>
+                <p class="txt">Stay safe and healthy. May God bless you!! Have lots of fun!!</p>
+                <p class="txt" style="text-align: justify;">From, Sohom Dada and Ma'am</p>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered musicModal">
+                <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Instruction</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                    	<p>Hey Birthday Girl,<br/>Click on the card to see the message.</p>
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">&times; Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="audio-container container-active position" tabindex="0" href="#" id="HappyBirthdayToYou">
+			<div class="audio-inner-container">
+				<div class="audio-app">
+					<div class="play active">
+					  <i class="fas fa-play fa-2x"></i>
+					</div>
+					<div class="pause">
+					  <i class="fas fa-pause fa-2x"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+                $(document).ready(function(){
+                    $(".txt").css('display', 'block');
+                    setTimeout( () => {
+                        $("#liveToast").toast('show');
+                        console.log("Shown!!");
+                    }, 2000);
+                    /*
+                    setTimeout( () => {
+                        $("#songToast").toast('show');
+                    }, 6000);*/
+                });
+        </script>
+    </body>
+</html>

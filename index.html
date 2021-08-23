@@ -10,7 +10,7 @@
         <link href="https://formula21.github.io/vendor/fontawesome/css/all.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css?t=177485" type="text/css"/>
+        <link rel="stylesheet" href="style.css?v=1509ed7" type="text/css"/>
     </head>
     <body>
         <div class="card-bd" style="box-sizing: unset;">
@@ -52,7 +52,7 @@
             </div>
         </div>
 		
-		 <div class="position-fixed bottom-0 p-3" style="z-index: 5; left: 0; bottom: 0;">
+		 <div class="position-fixed top-0 p-3" style="z-index: 5; left: 0; top: 0;">
             <div id="liveToast" class="toast fade" role="alert" data-autohide="true" aria-live="assertive" aria-atomic="true" data-delay="5000">
                 <div class="toast-header">
                     <svg class="bd-placeholder-img rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#007aff"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"> </text></svg>
@@ -61,17 +61,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="toast-body">Hey birthday Girl, click (<i class="far fa-hand-pointer"></i>) on the card to see the message!!!</div>
+                <div class="toast-body">Hey Birthday Girl, click on the card to see the message. Click on the play (<i class="fas fa-play"></i>) button below to hear your birthday song.</div>
             </div>
 		</div>
 		
 		<div class="audio-container container-active position" tabindex="0" href="#" id="hbdsong">
 			<div class="audio-inner-container">
 				<div class="audio-app">
-					<div class="play">
+					<div class="play active">
 					  <i class="fas fa-play fa-2x"></i>
 					</div>
-					<div class="pause active">
+					<div class="pause">
 					  <i class="fas fa-pause fa-2x"></i>
 					</div>
 				</div>
@@ -86,10 +86,29 @@
                         $("#liveToast").toast('show');
                         console.log("Shown!!");
                     }, 2000);
-                    /*
-                    setTimeout( () => {
-                        $("#songToast").toast('show');
-                    }, 6000);*/
+                    let hbd = document.createElement('audio');
+					hbd.src = "HappyBirthday.mp3";
+					hbd.type = "audio/mpeg";
+					hbd.onpause = function(){
+                     $(".audio-app > .pause").removeClass("active");
+                     $(".audio-app > .play").addClass("active");
+					 hbd.currentTime = 0;
+                   };
+				   
+				   $(".audio-app > .play").click(function(){
+                      if(hbd.paused == true){
+                         hbd.play().then( (e) =>{
+                            $(".audio-app > .play").removeClass("active");
+                            $(".audio-app > .pause").addClass("active");
+                         });
+                      }
+                   });
+
+                   $(".audio-app > .pause").click(function(){
+                      if(hbd.paused == !true){
+                         hbd.pause();
+                      }
+                   });
                 });
         </script>
     </body>

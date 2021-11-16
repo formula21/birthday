@@ -129,6 +129,8 @@
 		<!--script src="https://me.anweshan.online/js/app.js" type="text/javascript"></script-->
         <script type="text/javascript">
             $(document).ready(function(){
+                const defaultSkipTime = 10;
+                let seek = false;
                 $(".txt").css('display', 'block');
                   setTimeout( () => {
                     $("#liveToast").toast('show');
@@ -140,24 +142,28 @@
       					hbd.onpause = function(){
                     $(".audio-app > .pause").removeClass("active");
                     $(".audio-app > .play").addClass("active");
-                    hbd.currentTime = 0;
+                    if(!seek){
+                      // hbd.currentTime = 0;
+                    }
+                    seek = false;
                 };
 
                 hbd.onplay = function(){
                     $(".audio-app > .play").removeClass("active");
                     $(".audio-app > .pause").addClass("active");
-                    if(navigator.mediaSession){
+                    if('mediaSession' in navigator){
                       navigator.mediaSession.metadata = new MediaMetadata({
-                        title: "Aahir's Birthday",
-                        artist: "Ma'am & Sohom Dada",
+                        title: '"Aahir\'s" Birthday',
+                        artist: "Anweshan",
+                        album: "Birthday Album",
                         artwork: [
                           {src: "images/metamedia/birthday-cake-192.jpg", sizes:"192x192", type:"image/jpeg"},
                           {src: "images/metamedia/birthday-cake-256.jpg", sizes:"256x256", type:"image/jpeg"},
                           {src: "images/metamedia/birthday-cake-384.jpg", sizes:"384x384", type:"image/jpeg"},
-                          {src: "images/metamedia/birthday-cake-512.jpg", sizes:"512x512", type:"image/jpeg"},
+                          {src: "images/metamedia/birthday-cake-512.jpg", sizes:"512x512", type:"image/jpeg"}
                         ]
                       });
-                  }
+                    }
                 };
 
       				  $(".audio-app > .play").click(function(){
@@ -171,16 +177,43 @@
                      hbd.pause();
                   }
                });
-              if(navigator.mediaSession){
-                navigator.mediaSession.setActionHandler('play', async function(){
-  				          console.log('> User clicked "Play" icon.');
-  				          await hbd.play();
-  			         });
-  			        navigator.mediaSession.setActionHandler('pause', function() {
-  				        console.log('> User clicked "Pause" icon.');
-  				        hbd.pause();
-  			        });
+              if('mediaSession' in navigator && 'setActionHandler' in navigator.mediaSession){
+                  navigator.mediaSession.setActionHandler('play', async function(){
+    				          console.log('> User clicked "Play" icon.');
+    				          await hbd.play();
+    			         });
+    			        navigator.mediaSession.setActionHandler('pause', function() {
+    				        console.log('> User clicked "Pause" icon.');
+    				        hbd.pause();
+    			        });
+
+                  navigator.mediaSession.setActionHandler('seekbackward', function(event) {
+                      console.log('> User clicked "Seek Backward" icon.');
+                      seek = true;
+                      const skipTime = event.seekOffset || defaultSkipTime;
+                      hbd.currentTime = Math.max(hbd.currentTime - skipTime, 0);
+                      navigator.mediaSession.setPositionState({
+                          duration: hbd.duration,
+                          playbackRate: hbd.playbackRate,
+                          position: hbd.currentTime
+                      });
+                  });
+
+                  navigator.mediaSession.setActionHandler('seekforward', function(event) {
+                      console.log('> User clicked "Seek Forward" icon.');
+                      seek = true;
+                      const skipTime = event.seekOffset || defaultSkipTime;
+                      console.log(hbd.currentTime + skipTime);
+                      hbd.currentTime = Math.max(hbd.currentTime + skipTime, 0);
+                      navigator.mediaSession.setPositionState({
+                          duration: hbd.duration,
+                          playbackRate: hbd.playbackRate,
+                          position: hbd.currentTime
+                      });
+                  });
               }
+              document.body.appendChild(hbd);
+              hbd.controls = "true";
           });
         </script>
     </body>

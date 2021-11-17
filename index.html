@@ -130,22 +130,32 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 const defaultSkipTime = 10;
-                let seek = false;
                 $(".txt").css('display', 'block');
                   setTimeout( () => {
                     $("#liveToast").toast('show');
                     console.log("Shown!!");
                 }, 2000);
+
+                function updatePosition(element, position){
+                    if(element){
+                       element.currentTime = position;
+                    }
+                    if('setPositionState' in navigator.mediaSession){
+                      navigator.mediaSession.setPositionState({
+                          duration: element.duration,
+                          playbackRate: element.playbackRate,
+                          position: element.currentTime
+                      });
+                    }
+                }
+
                 let hbd = document.createElement('audio');
       					hbd.src = "audio/HappyBirthday.mp3";
       					hbd.type = "audio/mpeg";
       					hbd.onpause = function(){
                     $(".audio-app > .pause").removeClass("active");
                     $(".audio-app > .play").addClass("active");
-                    if(!seek){
-                      // hbd.currentTime = 0;
-                    }
-                    seek = false;
+                    updatePosition(hbd, 0);
                 };
 
                 hbd.onplay = function(){
@@ -168,7 +178,7 @@
 
       				  $(".audio-app > .play").click(function(){
                   if(hbd.paused == true){
-                     hbd.play();
+                     hbd.play().then(_ => {updatePosition(hbd, hbd.currentTime)});
                   }
                });
 
@@ -189,27 +199,18 @@
 
                   navigator.mediaSession.setActionHandler('seekbackward', function(event) {
                       console.log('> User clicked "Seek Backward" icon.');
-                      seek = true;
                       const skipTime = event.seekOffset || defaultSkipTime;
-                      hbd.currentTime = Math.max(hbd.currentTime - skipTime, 0);
-                      navigator.mediaSession.setPositionState({
-                          duration: hbd.duration,
-                          playbackRate: hbd.playbackRate,
-                          position: hbd.currentTime
-                      });
+                      let position = Math.max(hbd.currentTime - skipTime, 0);
+                      updatePosition(hbd, position);
                   });
 
                   navigator.mediaSession.setActionHandler('seekforward', function(event) {
                       console.log('> User clicked "Seek Forward" icon.');
                       seek = true;
                       const skipTime = event.seekOffset || defaultSkipTime;
-                      console.log(hbd.currentTime + skipTime);
-                      hbd.currentTime = Math.max(hbd.currentTime + skipTime, 0);
-                      navigator.mediaSession.setPositionState({
-                          duration: hbd.duration,
-                          playbackRate: hbd.playbackRate,
-                          position: hbd.currentTime
-                      });
+                      // console.log(hbd.currentTime + skipTime);
+                      position = Math.max(hbd.currentTime + skipTime, 0);
+                      updatePosition(hbd, position);
                   });
               }
           });

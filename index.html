@@ -14,9 +14,9 @@
 		<!-- Language Header -->
 		<meta name="language" content="English">
 
-    <title>Happy Birthday to you!!</title>
+    <title>Happy Birthday Anish!!</title>
 
-    <!-- day to you with Full Name -->
+    <!-- Anish Dalai with Full Name -->
     <!-- To You in Title with First -->
     <!-- birthday. -> name. -->
     <!-- Anweshan to Sonali Ma'am & Sohom Dada-->
@@ -25,17 +25,17 @@
 		<meta name="google-site-verification" content="tsPF8gQOeRAnWtHoxkbl4ncfsNPIcTy4czRBU9r_CT8" />
 
 		<!-- Primary Meta Tags & title -->
-		<meta name="title" content="Happy Birthday to you">
+		<meta name="title" content="Happy Birthday Anish">
 		<meta name="author" content="Anweshan Roy Chowdhury">
-		<meta name="description" content="Many many happy returns of the day to you.">
+		<meta name="description" content="Many many happy returns of the Anish Dalai.">
     <meta name="domain" content="birthday.anweshan.online">
 
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://birthday.anweshan.online">
-		<meta property="og:title" content="Happy Birthday to you">
-		<meta property="og:description" content="Many many happy returns of the day to you.">
+		<meta property="og:title" content="Happy Birthday Anish">
+		<meta property="og:description" content="Many many happy returns of the Anish Dalai.">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
     <meta property="og:image" content="https://birthday.anweshan.online/images/og-image.jpg?v=9f7a0a">
@@ -45,8 +45,8 @@
 		<meta property="twitter:card" content="summary">
 		<meta property="twitter:creator" content="@_formula21">
 		<meta property="twitter:url" content="https://birthday.anweshan.online">
-		<meta property="twitter:title" content="Happy Birthday to you">
-		<meta property="twitter:description" content="Many many happy returns of the day to you">
+		<meta property="twitter:title" content="Happy Birthday Anish">
+		<meta property="twitter:description" content="Many many happy returns of the Anish Dalai">
 		<meta property="twitter:image" content="https://birthday.anweshan.online/images/og-image.jpg">
 		<meta property="twitter:domain" content="birthday.anweshan.online">
 
@@ -73,10 +73,10 @@
                 </div>
             </div>
             <div class="text-container">
-                <p class="head txt">Happy Birthday to you!!</p>
+                <p class="head txt">Happy Birthday Anish!!</p>
                 <p class="txt">Wishing you a day filled with happiness and a year filled with joy. Many many happy returns of the day</p>
                 <p class="txt">Stay safe and healthy, and have lots of fun. May God bless You!!</p>
-                <p class="txt" style="text-align: justify;">From, Anweshan.</p>
+                <p class="txt" style="text-align: justify;">From, Sonali Ma'am &amp; Sohom Dada.</p>
             </div>
         </div>
         <div class="modal fade" id="myModal">
@@ -113,7 +113,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="toast-body"><!-- Hey Birthday Boy, click -->Click on the card to see the message. Click on the play (<i class="fas fa-play"></i>) button below to hear your birthday song.</div>
+                <div class="toast-body">Hey Birthday Boy, click on the card to see the message. Click on the play (<i class="fas fa-play"></i>) button below to hear your birthday song.</div>
             </div>
 		</div>
 
@@ -154,6 +154,20 @@
                     }
                 }
 
+                if('mediaSession' in navigator){
+                  navigator.mediaSession.metadata = new MediaMetadata({
+                    title: '"Anish\'s" Birthday',
+                    artist: "Anweshan",
+                    album: "Birthday Album",
+                    artwork: [
+                      {src: "images/metamedia/birthday-cake-192.jpg", sizes:"192x192", type:"image/jpeg"},
+                      {src: "images/metamedia/birthday-cake-256.jpg", sizes:"256x256", type:"image/jpeg"},
+                      {src: "images/metamedia/birthday-cake-384.jpg", sizes:"384x384", type:"image/jpeg"},
+                      {src: "images/metamedia/birthday-cake-512.jpg", sizes:"512x512", type:"image/jpeg"}
+                    ]
+                  });
+                }
+
                 let hbd = document.createElement('audio');
       					hbd.src = "audio/HappyBirthday.mp3";
       					hbd.type = "audio/mpeg";
@@ -166,19 +180,6 @@
                 hbd.onplay = function(){
                     $(".audio-app > .play").removeClass("active");
                     $(".audio-app > .pause").addClass("active");
-                    if('mediaSession' in navigator){
-                      navigator.mediaSession.metadata = new MediaMetadata({
-                        title: '"To You\'s" Birthday',
-                        artist: "Anweshan",
-                        album: "Birthday Album",
-                        artwork: [
-                          {src: "images/metamedia/birthday-cake-192.jpg", sizes:"192x192", type:"image/jpeg"},
-                          {src: "images/metamedia/birthday-cake-256.jpg", sizes:"256x256", type:"image/jpeg"},
-                          {src: "images/metamedia/birthday-cake-384.jpg", sizes:"384x384", type:"image/jpeg"},
-                          {src: "images/metamedia/birthday-cake-512.jpg", sizes:"512x512", type:"image/jpeg"}
-                        ]
-                      });
-                    }
                 };
 
       				  $(".audio-app > .play").click(function(){
